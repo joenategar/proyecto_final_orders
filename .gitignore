@@ -1,0 +1,35 @@
+# Entorno de ejecución de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Variables de entorno y secretos
+.env
+
+# Base de datos local
+*.db
+*.sqlite
+orders.db
+
+# Herramientas de testing y calidad
+.pytest_cache/
+.coverage
+.mypy_cache/
+.ruff_cache/
+
+# Construcción y empaquetado
+dist/
+build/
+*.egg-info/
+*.whl
+
+# IDEs y Sistema Operativo
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

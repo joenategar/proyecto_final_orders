@@ -1,0 +1,34 @@
+name: Pipeline Integrador Orders
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  calidad-y-pruebas:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        
+      - name: Install dependencies
+        run: poetry install
+        
+      - name: Auditoría de Seguridad
+        run: poetry run pip-audit
+        
+      - name: Linters y Tipado Estricto
+        run: |
+          poetry run ruff check .
+          poetry run mypy src/
+          
+      - name: Pruebas End-to-End
+        run: poetry run pytest -v
